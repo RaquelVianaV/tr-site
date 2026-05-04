@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TR Eventos | Formaturas em Fortaleza</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0b0b0b;
+      color: #ffffff;
+      line-height: 1.6;
+    }
+
+    header {
+      padding: 28px 8%;
+      background: #000000;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.35);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: #d4af37;
+      letter-spacing: 1px;
+    }
+
+    nav a {
+      color: #ffffff;
+      text-decoration: none;
+      margin-left: 22px;
+      font-size: 15px;
+    }
+
+    .hero {
+      padding: 90px 8% 80px;
+      background: linear-gradient(135deg, #000000 0%, #151515 60%, #2a2209 100%);
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 44px;
+      line-height: 1.15;
+      margin-bottom: 22px;
+      color: #ffffff;
+    }
+
+    .hero h1 span {
+      color: #d4af37;
+    }
+
+    .hero p {
+      max-width: 800px;
+      margin: 0 auto 34px;
+      font-size: 19px;
+      color: #f0f0f0;
+    }
+
+    .button {
+      display: inline-block;
+      background: #d4af37;
+      color: #000000;
+      padding: 15px 28px;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    section {
+      padding: 70px 8%;
+    }
+
+    .section-title {
+      color: #d4af37;
+      font-size: 30px;
+      margin-bottom: 18px;
+      text-align: center;
+    }
+
+    .section-text {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+      color: #e8e8e8;
+      font-size: 18px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 22px;
+      margin-top: 38px;
+    }
+
+    .card {
+      background: #141414;
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      border-radius: 18px;
+      padding: 28px;
+      text-align: center;
+    }
+
+    .card h3 {
+      color: #d4af37;
+      margin-bottom: 12px;
+      font-size: 21px;
+    }
+
+    .card p {
+      color: #e6e6e6;
+      font-size: 16px;
+    }
+
+    .highlight {
+      background: #000000;
+      border-top: 1px solid rgba(212, 175, 55, 0.25);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+    }
+
+    .contact-box {
+      max-width: 760px;
+      margin: 36px auto 0;
+      background: #141414;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 20px;
+      padding: 34px;
+      text-align: center;
+    }
+
+    .contact-box p {
+      margin: 10px 0;
+      font-size: 17px;
+    }
+
+    footer {
+      background: #000000;
+      color: #cccccc;
+      text-align: center;
+      padding: 35px 8%;
+      border-top: 1px solid rgba(212, 175, 55, 0.25);
+      font-size: 14px;
+    }
+
+    @media (max-width: 720px) {
+      nav a {
+        margin-left: 0;
+        margin-right: 16px;
+      }
+
+      .hero h1 {
+        font-size: 34px;
+      }
+
+      .hero p,
+      .section-text {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">TR Eventos</div>
+    <nav>
+      <a href="#sobre">Sobre</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Transformamos <span>formaturas</span> em experiências inesquecíveis</h1>
+    <p>
+      A TR Eventos atua há mais de 20 anos na organização de formaturas, unindo planejamento, emoção, cuidado e excelência em cada detalhe.
+    </p>
+    <a class="button" href="https://wa.me/5585999225851" target="_blank">Falar com a TR Eventos</a>
+  </section>
+
+  <section id="sobre">
+    <h2 class="section-title">Sobre a TR Eventos</h2>
+    <p class="section-text">
+      Desde 2004, a TR Eventos realiza formaturas em Fortaleza e região, acompanhando escolas, alunos, famílias e comissões em uma das fases mais marcantes da vida estudantil. Nosso trabalho vai além da organização de uma festa: cuidamos da experiência, da emoção e da segurança de cada etapa, para que cada conquista seja celebrada como merece.
+    </p>
+  </section>
+
+  <section id="servicos" class="highlight">
+    <h2 class="section-title">Nossos serviços</h2>
+    <p class="section-text">
+      Oferecemos soluções completas para formaturas escolares, com atendimento próximo, planejamento personalizado e acompanhamento profissional do início ao grande dia.
+    </p>
+
+    <div class="cards">
+      <div class="card">
+        <h3>Baile de Formatura</h3>
+        <p>Organização, cerimonial, decoração, estrutura, buffet e acompanhamento completo para a celebração dos formandos.</p>
+      </div>
+
+      <div class="card">
+        <h3>Fotos de Formatura</h3>
+        <p>Ensaios em estúdio, externas, fotos com beca, família, turma e cobertura dos momentos especiais.</p>
+      </div>
+
+      <div class="card">
+        <h3>Colação de Grau</h3>
+        <p>Suporte na organização, cerimonial, roteiro, entrada dos formandos e registros fotográficos.</p>
+      </div>
+
+      <div class="card">
+        <h3>Atendimento às Comissões</h3>
+        <p>Reuniões, alinhamentos, planejamento por escola, suporte financeiro e acompanhamento durante todo o processo.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">Por que escolher a TR?</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Experiência</h3>
+        <p>Mais de duas décadas realizando formaturas e acompanhando turmas em momentos únicos.</p>
+      </div>
+      <div class="card">
+        <h3>Cuidado</h3>
+        <p>Atendimento humanizado, próximo e comprometido com alunos, pais e escolas.</p>
+      </div>
+      <div class="card">
+        <h3>Organização</h3>
+        <p>Planejamento por etapas, alinhamento com comissões e atenção aos detalhes.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contato" class="highlight">
+    <h2 class="section-title">Contato</h2>
+    <p class="section-text">
+      Fale com a nossa equipe para conhecer nossas propostas, tirar dúvidas ou solicitar atendimento para sua escola.
+    </p>
+
+    <div class="contact-box">
+      <p><strong>Empresa:</strong> TR Eventos</p>
+      <p><strong>Razão Social:</strong> TR Freitas Eventos & Serviços LTDA ME</p>
+      <p><strong>CNPJ:</strong> 28.662.750/0001-48</p>
+      <p><strong>WhatsApp:</strong> (85) 99922-5851</p>
+      <a class="button" href="https://www.instagram.com/treventtos/" target="_blank">Instagram</a>
+      <p><strong>Atuação:</strong> Fortaleza/CE e região</p>
+    </div>
+  </section>
+
+  <footer>
+    Raquel Viana
+    <p>© 2026 TR Eventos. Todos os direitos reservados.</p>
+    <p>Organização de formaturas, eventos escolares e registros fotográficos.</p>
+  </footer>
+</body>
+</html>
