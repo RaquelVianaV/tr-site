@@ -5,17 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TR Eventos | Formaturas em Fortaleza</title>
   <style>
-     .zap {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #25D366;
-      color: #fff;
-      padding: 14px;
-      border-radius: 50px;
-      font-weight: bold;
-      text-decoration: none;
-    }
     * {
       margin: 0;
       padding: 0;
@@ -89,6 +78,20 @@
       font-size: 16px;
     }
 
+    .zap {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 10;
+      background: #25d366;
+      color: #ffffff;
+      padding: 14px 20px;
+      border-radius: 50px;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
+    }
+
     section {
       padding: 70px 8%;
     }
@@ -155,6 +158,10 @@
       font-size: 17px;
     }
 
+    .contact-box .button {
+      margin: 14px 0 6px;
+    }
+
     footer {
       background: #000000;
       color: #cccccc;
@@ -165,9 +172,13 @@
     }
 
     @media (max-width: 720px) {
+      header {
+        justify-content: center;
+        text-align: center;
+      }
+
       nav a {
-        margin-left: 0;
-        margin-right: 16px;
+        margin: 0 8px;
       }
 
       .hero h1 {
@@ -177,6 +188,12 @@
       .hero p,
       .section-text {
         font-size: 16px;
+      }
+
+      .zap {
+        right: 14px;
+        bottom: 14px;
+        padding: 12px 16px;
       }
     }
   </style>
@@ -191,84 +208,97 @@
     </nav>
   </header>
 
-  <section class="hero">
-    <h1>Transformamos <span>formaturas</span> em experiências inesquecíveis</h1>
-    <p>
-      A TR Eventos atua há mais de 20 anos na organização de formaturas, unindo planejamento, emoção, cuidado e excelência em cada detalhe.
-    </p>
-    <a class="button" href="https://wa.me/5585999225851" target="_blank">Falar com a TR Eventos</a>
-  </section>
+  <main>
+    <section class="hero">
+      <h1>Transformamos <span>formaturas</span> em experiências inesquecíveis</h1>
+      <p>
+        A TR Eventos atua há mais de 20 anos na organização de formaturas, unindo planejamento,
+        emoção, cuidado e excelência em cada detalhe.
+      </p>
+      <a class="button" href="https://wa.me/5585999225851" target="_blank" rel="noopener">Falar com a TR Eventos</a>
+    </section>
 
-  <section id="sobre">
-    <h2 class="section-title">Sobre a TR Eventos</h2>
-    <p class="section-text">
-      Desde 2004, a TR Eventos realiza formaturas em Fortaleza e região, acompanhando escolas, alunos, famílias e comissões em uma das fases mais marcantes da vida estudantil. Nosso trabalho vai além da organização de uma festa: cuidamos da experiência, da emoção e da segurança de cada etapa, para que cada conquista seja celebrada como merece.
-    </p>
-  </section>
+    <section id="sobre">
+      <h2 class="section-title">Sobre a TR Eventos</h2>
+      <p class="section-text">
+        Desde 2004, a TR Eventos realiza formaturas em Fortaleza e região, acompanhando escolas,
+        alunos, famílias e comissões em uma das fases mais marcantes da vida estudantil. Nosso
+        trabalho vai além da organização de uma festa: cuidamos da experiência, da emoção e da
+        segurança de cada etapa, para que cada conquista seja celebrada como merece.
+      </p>
+    </section>
 
-  <section id="servicos" class="highlight">
-    <h2 class="section-title">Nossos serviços</h2>
-    <p class="section-text">
-      Oferecemos soluções completas para formaturas escolares, com atendimento próximo, planejamento personalizado e acompanhamento profissional do início ao grande dia.
-    </p>
+    <section id="servicos" class="highlight">
+      <h2 class="section-title">Nossos serviços</h2>
+      <p class="section-text">
+        Oferecemos soluções completas para formaturas escolares, com atendimento próximo,
+        planejamento personalizado e acompanhamento profissional do início ao grande dia.
+      </p>
 
-    <div class="cards">
-      <div class="card">
-        <h3>Baile de Formatura</h3>
-        <p>Organização, cerimonial, decoração, estrutura, buffet e acompanhamento completo para a celebração dos formandos.</p>
+      <div class="cards">
+        <div class="card">
+          <h3>Baile de Formatura</h3>
+          <p>Organização, cerimonial, decoração, estrutura, buffet e acompanhamento completo para a celebração dos formandos.</p>
+        </div>
+
+        <div class="card">
+          <h3>Fotos de Formatura</h3>
+          <p>Ensaios em estúdio, externas, fotos com beca, família, turma e cobertura dos momentos especiais.</p>
+        </div>
+
+        <div class="card">
+          <h3>Colação de Grau</h3>
+          <p>Suporte na organização, cerimonial, roteiro, entrada dos formandos e registros fotográficos.</p>
+        </div>
+
+        <div class="card">
+          <h3>Atendimento às Comissões</h3>
+          <p>Reuniões, alinhamentos, planejamento por escola, suporte financeiro e acompanhamento durante todo o processo.</p>
+        </div>
       </div>
+    </section>
 
-      <div class="card">
-        <h3>Fotos de Formatura</h3>
-        <p>Ensaios em estúdio, externas, fotos com beca, família, turma e cobertura dos momentos especiais.</p>
+    <section>
+      <h2 class="section-title">Por que escolher a TR?</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Experiência</h3>
+          <p>Mais de duas décadas realizando formaturas e acompanhando turmas em momentos únicos.</p>
+        </div>
+        <div class="card">
+          <h3>Cuidado</h3>
+          <p>Atendimento humanizado, próximo e comprometido com alunos, pais e escolas.</p>
+        </div>
+        <div class="card">
+          <h3>Organização</h3>
+          <p>Planejamento por etapas, alinhamento com comissões e atenção aos detalhes.</p>
+        </div>
       </div>
+    </section>
 
-      <div class="card">
-        <h3>Colação de Grau</h3>
-        <p>Suporte na organização, cerimonial, roteiro, entrada dos formandos e registros fotográficos.</p>
-      </div>
+    <section id="contato" class="highlight">
+      <h2 class="section-title">Contato</h2>
+      <p class="section-text">
+        Fale com a nossa equipe para conhecer nossas propostas, tirar dúvidas ou solicitar atendimento para sua escola.
+      </p>
 
-      <div class="card">
-        <h3>Atendimento às Comissões</h3>
-        <p>Reuniões, alinhamentos, planejamento por escola, suporte financeiro e acompanhamento durante todo o processo.</p>
+      <div class="contact-box">
+        <p><strong>Empresa:</strong> TR Eventos</p>
+        <p><strong>Razão Social:</strong> TR Freitas Eventos & Serviços LTDA ME</p>
+        <p><strong>CNPJ:</strong> 28.662.750/0001-48</p>
+        <p><strong>WhatsApp:</strong> (85) 99922-5851</p>
+        <p><strong>Raquel Viana</strong></p>
+        <a class="button" href="https://www.instagram.com/treventtos/" target="_blank" rel="noopener">Instagram</a>
+        <p><strong>Atuação:</strong> Fortaleza/CE e região</p>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <section>
-    <h2 class="section-title">Por que escolher a TR?</h2>
-    <div class="cards">
-      <div class="card">
-        <h3>Experiência</h3>
-        <p>Mais de duas décadas realizando formaturas e acompanhando turmas em momentos únicos.</p>
-      </div>
-      <div class="card">
-        <h3>Cuidado</h3>
-        <p>Atendimento humanizado, próximo e comprometido com alunos, pais e escolas.</p>
-      </div>
-      <div class="card">
-        <h3>Organização</h3>
-        <p>Planejamento por etapas, alinhamento com comissões e atenção aos detalhes.</p>
-      </div>
-    </div>
-  </section>
+  <a class="zap" href="https://wa.me/5585999225851" target="_blank" rel="noopener">WhatsApp</a>
 
-  <section id="contato" class="highlight">
-    <h2 class="section-title">Contato</h2>
-    <p class="section-text">
-      Fale com a nossa equipe para conhecer nossas propostas, tirar dúvidas ou solicitar atendimento para sua escola.
-    </p>
-
-    <div class="contact-box">
-      <p><strong>Empresa:</strong> TR Eventos</p>
-      <p><strong>Razão Social:</strong> TR Freitas Eventos & Serviços LTDA ME</p>
-      <p><strong>CNPJ:</strong> 28.662.750/0001-48</p>
-      <p><strong>WhatsApp:</strong> (85) 99922-5851</p>
-      <a class="button" href="https://www.instagram.com/treventtos/" target="_blank">Instagram</a>
-      <p><strong>Atuação:</strong> Fortaleza/CE e região</p>
-      <p><strong>Raquel Viana</strong></p>
-      </strong></p>
-    </div>
-  </section>
-  
   <footer>
+    <p>&copy; 2026 TR Eventos. Todos os direitos reservados.</p>
+    <p>Organização de formaturas, eventos escolares e registros fotográficos.</p>
+  </footer>
+</body>
+</html>
