@@ -5,6 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TR Eventos | Formaturas em Fortaleza</title>
   <style>
+    :root {
+      --gold: #d4af37;
+      --gold-light: #f0c94d;
+      --black: #000000;
+      --surface: #141414;
+      --text-soft: #e8e8e8;
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -13,58 +21,131 @@
 
     body {
       font-family: Arial, Helvetica, sans-serif;
-      background: #0b0b0b;
+      background:
+        linear-gradient(rgba(0, 0, 0, 0.76), rgba(0, 0, 0, 0.78)),
+        url("imagens/Imagem1.png") center / cover fixed;
       color: #ffffff;
-      line-height: 1.6;
+      font-size: 18px;
+      line-height: 1.65;
+      scroll-behavior: smooth;
     }
 
     header {
-      padding: 28px 8%;
-      background: #000000;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      padding: 22px 8%;
+      background: rgba(0, 0, 0, 0.94);
+      backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(212, 175, 55, 0.35);
-      display: flex;
-      justify-content: space-between;
+      display: grid;
+      grid-template-columns: 148px 1fr 148px;
       align-items: center;
       flex-wrap: wrap;
-      gap: 16px;
+      gap: 32px;
+      animation: fadeDown 0.8s ease both;
     }
 
     .logo {
-      font-size: 28px;
-      font-weight: bold;
-      color: #d4af37;
-      letter-spacing: 1px;
+      display: inline-flex;
+      align-items: center;
+      width: 148px;
+      text-decoration: none;
+      transition: transform 0.25s ease, filter 0.25s ease;
+    }
+
+    .logo img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .logo:hover,
+    .logo:focus {
+      filter: drop-shadow(0 0 14px rgba(212, 175, 55, 0.35));
+      transform: scale(1.03);
+      outline: none;
     }
 
     nav a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 11px 22px;
+      border: 1px solid rgba(212, 175, 55, 0.45);
+      border-radius: 999px;
+      background: rgba(212, 175, 55, 0.08);
       color: #ffffff;
       text-decoration: none;
-      margin-left: 22px;
-      font-size: 15px;
+      font-size: 17px;
+      font-weight: bold;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+      transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    nav a:hover,
+    nav a:focus {
+      background: #d4af37;
+      border-color: #d4af37;
+      color: #000000;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px rgba(212, 175, 55, 0.22);
+      outline: none;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      justify-content: center;
+      grid-column: 2;
     }
 
     .hero {
-      padding: 90px 8% 80px;
-      background: linear-gradient(135deg, #000000 0%, #151515 60%, #2a2209 100%);
+      position: relative;
+      overflow: hidden;
+      padding: 110px 8% 96px;
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.88) 0%, rgba(21, 21, 21, 0.84) 55%, rgba(42, 34, 9, 0.82) 100%);
+      background-size: 140% 140%;
       text-align: center;
+      animation: goldShift 8s ease-in-out infinite alternate;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top, rgba(212, 175, 55, 0.16), transparent 34%);
+      pointer-events: none;
     }
 
     .hero h1 {
-      font-size: 44px;
+      position: relative;
+      font-size: clamp(42px, 6vw, 68px);
       line-height: 1.15;
       margin-bottom: 22px;
       color: #ffffff;
+      animation: fadeUp 0.9s ease 0.15s both;
     }
 
     .hero h1 span {
       color: #d4af37;
+      text-shadow: 0 0 26px rgba(212, 175, 55, 0.25);
     }
 
     .hero p {
+      position: relative;
       max-width: 800px;
       margin: 0 auto 34px;
-      font-size: 19px;
+      font-size: 22px;
       color: #f0f0f0;
+      animation: fadeUp 0.9s ease 0.3s both;
+    }
+
+    .hero .button {
+      position: relative;
+      animation: fadeUp 0.9s ease 0.45s both;
     }
 
     .button {
@@ -75,7 +156,16 @@
       border-radius: 40px;
       text-decoration: none;
       font-weight: bold;
-      font-size: 16px;
+      font-size: 18px;
+      transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .button:hover,
+    .button:focus {
+      background: #f0c94d;
+      transform: translateY(-3px);
+      box-shadow: 0 14px 30px rgba(212, 175, 55, 0.28);
+      outline: none;
     }
 
     .zap {
@@ -88,19 +178,32 @@
       padding: 14px 20px;
       border-radius: 50px;
       font-weight: bold;
+      font-size: 17px;
       text-decoration: none;
       box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
+      animation: pulseWhats 2.8s ease-in-out infinite;
+      transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .zap:hover,
+    .zap:focus {
+      background: #1fbd5b;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.4);
+      outline: none;
     }
 
     section {
-      padding: 70px 8%;
+      padding: 84px 8%;
+      animation: fadeUp 0.8s ease both;
     }
 
     .section-title {
       color: #d4af37;
-      font-size: 30px;
+      font-size: clamp(34px, 4vw, 46px);
       margin-bottom: 18px;
       text-align: center;
+      line-height: 1.2;
     }
 
     .section-text {
@@ -108,7 +211,7 @@
       margin: 0 auto;
       text-align: center;
       color: #e8e8e8;
-      font-size: 18px;
+      font-size: 21px;
     }
 
     .cards {
@@ -122,23 +225,104 @@
       background: #141414;
       border: 1px solid rgba(212, 175, 55, 0.25);
       border-radius: 18px;
-      padding: 28px;
+      padding: 32px;
       text-align: center;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
+    }
+
+    .service-video-card {
+      width: 100%;
+      font: inherit;
+      color: inherit;
+      cursor: pointer;
+      transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    }
+
+    .service-video-card:hover,
+    .service-video-card:focus {
+      border-color: rgba(212, 175, 55, 0.75);
+      background: #181818;
+      transform: translateY(-6px);
+      box-shadow: 0 18px 38px rgba(0, 0, 0, 0.34);
+      outline: none;
     }
 
     .card h3 {
       color: #d4af37;
       margin-bottom: 12px;
-      font-size: 21px;
+      font-size: 24px;
+      line-height: 1.25;
     }
 
     .card p {
       color: #e6e6e6;
-      font-size: 16px;
+      font-size: 18px;
+    }
+
+    .video-modal {
+      width: min(860px, calc(100% - 32px));
+      margin: auto;
+      padding: 0;
+      color: #ffffff;
+      background: #111111;
+      border: 1px solid rgba(212, 175, 55, 0.45);
+      border-radius: 20px;
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.65);
+      animation: fadeUp 0.25s ease both;
+    }
+
+    .video-modal::backdrop {
+      background: rgba(0, 0, 0, 0.72);
+      backdrop-filter: blur(4px);
+    }
+
+    .video-modal-content {
+      padding: 32px;
+      position: relative;
+    }
+
+    .video-modal-content h3 {
+      color: #d4af37;
+      font-size: 30px;
+      line-height: 1.2;
+      margin-bottom: 18px;
+      padding-right: 44px;
+    }
+
+    .video-modal-content video {
+      display: block;
+      width: 100%;
+      max-height: 70vh;
+      border-radius: 14px;
+      background: #000000;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      width: 38px;
+      height: 38px;
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      border-radius: 50%;
+      background: rgba(212, 175, 55, 0.08);
+      color: #ffffff;
+      cursor: pointer;
+      font-size: 24px;
+      line-height: 1;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    }
+
+    .modal-close:hover,
+    .modal-close:focus {
+      background: #d4af37;
+      color: #000000;
+      transform: rotate(90deg);
+      outline: none;
     }
 
     .highlight {
-      background: #000000;
+      background: rgba(0, 0, 0, 0.82);
       border-top: 1px solid rgba(212, 175, 55, 0.25);
       border-bottom: 1px solid rgba(212, 175, 55, 0.25);
     }
@@ -151,11 +335,12 @@
       border-radius: 20px;
       padding: 34px;
       text-align: center;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
     }
 
     .contact-box p {
       margin: 10px 0;
-      font-size: 17px;
+      font-size: 19px;
     }
 
     .contact-box .button {
@@ -168,26 +353,110 @@
       text-align: center;
       padding: 35px 8%;
       border-top: 1px solid rgba(212, 175, 55, 0.25);
-      font-size: 14px;
+      font-size: 16px;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeDown {
+      from {
+        opacity: 0;
+        transform: translateY(-18px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes goldShift {
+      from {
+        background-position: 0% 50%;
+      }
+
+      to {
+        background-position: 100% 50%;
+      }
+    }
+
+    @keyframes pulseWhats {
+      0%,
+      100% {
+        box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
+      }
+
+      50% {
+        box-shadow: 0 12px 28px rgba(37, 211, 102, 0.28);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
     }
 
     @media (max-width: 720px) {
       header {
+        display: flex;
         justify-content: center;
         text-align: center;
+        gap: 18px;
+      }
+
+      .logo {
+        width: 124px;
       }
 
       nav a {
-        margin: 0 8px;
+        flex: 1 1 95px;
+        min-height: 42px;
+        padding: 9px 12px;
+        font-size: 16px;
+      }
+
+      nav {
+        width: 100%;
+        gap: 12px;
+        max-width: none;
       }
 
       .hero h1 {
-        font-size: 34px;
+        font-size: 38px;
       }
 
       .hero p,
       .section-text {
-        font-size: 16px;
+        font-size: 18px;
+      }
+
+      .card p,
+      .contact-box p {
+        font-size: 17px;
+      }
+
+      .video-modal-content {
+        padding: 28px 18px 22px;
+      }
+
+      .video-modal-content h3 {
+        font-size: 25px;
       }
 
       .zap {
@@ -199,8 +468,10 @@
   </style>
 </head>
 <body>
-  <header>
-    <div class="logo">TR Eventos</div>
+  <header id="topo">
+    <a class="logo" href="#topo" aria-label="TR Eventos">
+      <img src="assets/logo-tr.png" alt="TR Eventos" />
+    </a>
     <nav>
       <a href="#sobre">Sobre</a>
       <a href="#servicos">Serviços</a>
@@ -236,26 +507,59 @@
       </p>
 
       <div class="cards">
-        <div class="card">
+        <button class="card service-video-card" type="button" data-video-modal="baile-video">
           <h3>Baile de Formatura</h3>
           <p>Organização, cerimonial, decoração, estrutura, buffet e acompanhamento completo para a celebração dos formandos.</p>
-        </div>
+        </button>
 
-        <div class="card">
+        <button class="card service-video-card" type="button" data-video-modal="fotos-video">
           <h3>Fotos de Formatura</h3>
           <p>Ensaios em estúdio, externas, fotos com beca, família, turma e cobertura dos momentos especiais.</p>
-        </div>
+        </button>
 
-        <div class="card">
+        <button class="card service-video-card" type="button" data-video-modal="colacao-video">
           <h3>Colação de Grau</h3>
           <p>Suporte na organização, cerimonial, roteiro, entrada dos formandos e registros fotográficos.</p>
-        </div>
+        </button>
 
         <div class="card">
           <h3>Atendimento às Comissões</h3>
           <p>Reuniões, alinhamentos, planejamento por escola, suporte financeiro e acompanhamento durante todo o processo.</p>
         </div>
       </div>
+
+      <dialog class="video-modal" id="fotos-video" aria-labelledby="fotos-video-title">
+        <div class="video-modal-content">
+          <button class="modal-close" type="button" data-close-video aria-label="Fechar vídeo">&times;</button>
+          <h3 id="fotos-video-title">Fotos de Formatura</h3>
+          <video controls preload="metadata">
+            <source src="videos/ESTÚDIO E EXTERNA.mp4" type="video/mp4" />
+            Seu navegador não suporta vídeo HTML5.
+          </video>
+        </div>
+      </dialog>
+
+      <dialog class="video-modal" id="baile-video" aria-labelledby="baile-video-title">
+        <div class="video-modal-content">
+          <button class="modal-close" type="button" data-close-video aria-label="Fechar vídeo">&times;</button>
+          <h3 id="baile-video-title">Baile de Formatura</h3>
+          <video controls preload="metadata">
+            <source src="videos/PALATIUM BUFFET - BAILE 3º ANO EEEP JUAREZ TÁVORA.MP4" type="video/mp4" />
+            Seu navegador não suporta vídeo HTML5.
+          </video>
+        </div>
+      </dialog>
+
+      <dialog class="video-modal" id="colacao-video" aria-labelledby="colacao-video-title">
+        <div class="video-modal-content">
+          <button class="modal-close" type="button" data-close-video aria-label="Fechar vídeo">&times;</button>
+          <h3 id="colacao-video-title">Colação de Grau</h3>
+          <video controls preload="metadata">
+            <source src="videos/ALECE - COLAÇÃO DE GRAU EEEPJMS.MP4" type="video/mp4" />
+            Seu navegador não suporta vídeo HTML5.
+          </video>
+        </div>
+      </dialog>
     </section>
 
     <section>
@@ -287,7 +591,6 @@
         <p><strong>Razão Social:</strong> TR Freitas Eventos & Serviços LTDA ME</p>
         <p><strong>CNPJ:</strong> 28.662.750/0001-48</p>
         <p><strong>WhatsApp:</strong> (85) 99922-5851</p>
-        <p><strong>Raquel Viana</strong></p>
         <a class="button" href="https://www.instagram.com/treventtos/" target="_blank" rel="noopener">Instagram</a>
         <p><strong>Atuação:</strong> Fortaleza/CE e região</p>
       </div>
@@ -297,8 +600,45 @@
   <a class="zap" href="https://wa.me/5585999225851" target="_blank" rel="noopener">WhatsApp</a>
 
   <footer>
+    <p>Desenvolvido por: Raquel Viana.</p>
     <p>&copy; 2026 TR Eventos. Todos os direitos reservados.</p>
     <p>Organização de formaturas, eventos escolares e registros fotográficos.</p>
   </footer>
+
+  <script>
+    const videoButtons = document.querySelectorAll("[data-video-modal]");
+    const videoModals = document.querySelectorAll(".video-modal");
+
+    videoButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const modal = document.getElementById(button.dataset.videoModal);
+
+        if (modal) {
+          modal.showModal();
+        }
+      });
+    });
+
+    videoModals.forEach((modal) => {
+      const videoPlayer = modal.querySelector("video");
+
+      modal.addEventListener("click", (event) => {
+        if (event.target === modal) {
+          modal.close();
+        }
+      });
+
+      modal.querySelector("[data-close-video]")?.addEventListener("click", () => {
+        modal.close();
+      });
+
+      modal.addEventListener("close", () => {
+        if (videoPlayer) {
+          videoPlayer.pause();
+          videoPlayer.currentTime = 0;
+        }
+      });
+    });
+  </script>
 </body>
 </html>
