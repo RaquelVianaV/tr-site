@@ -1,0 +1,9 @@
+.git
+.gitdata
+.git-broken-acl
+.git-broken-acl/**
+.vercel
+node_modules
+**/node_modules
+*.crdownload
+**/*.crdownload
