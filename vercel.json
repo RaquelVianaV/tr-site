@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/workspace",
+      "destination": "/workspace-tr-eventos.html"
+    }
+  ]
+}
