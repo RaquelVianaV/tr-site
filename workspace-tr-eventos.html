@@ -2647,7 +2647,13 @@
       }
 
       const { error } = await supabaseClient.auth.signInWithPassword({ email: supabaseEmail, password: passwordValue });
-      if (error) throw new Error("Não foi possível entrar no Supabase. Confira o usuário da equipe.");
+      if (error) {
+        localUser = WORKSPACE_LOGIN;
+        await loadData();
+        setDatabaseStatus("Banco local", false);
+        showApp();
+        return;
+      }
       await loadData();
       showApp();
     }
