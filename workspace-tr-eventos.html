@@ -1294,7 +1294,6 @@
         <input id="password" type="password" autocomplete="current-password" placeholder="Sua senha" required>
       </div>
       <button class="primary" type="submit">Entrar</button>
-      <button class="ghost" type="button" id="demoLogin">Entrar em modo teste</button>
       <p class="note" id="loginNote">Use o login da equipe para acessar o workspace.</p>
     </form>
   </section>
@@ -1505,7 +1504,6 @@
       loginForm: document.querySelector("#loginForm"),
       email: document.querySelector("#email"),
       password: document.querySelector("#password"),
-      demoLogin: document.querySelector("#demoLogin"),
       loginNote: document.querySelector("#loginNote"),
       nav: document.querySelector("#nav"),
       serverStatus: document.querySelector("#serverStatus"),
@@ -2665,12 +2663,6 @@
       } catch (error) {
         els.loginNote.textContent = error.message || "Não foi possível entrar.";
       }
-    });
-
-    els.demoLogin.addEventListener("click", async () => {
-      localUser = "modo local";
-      await loadData();
-      showApp();
     });
 
     els.nav.addEventListener("click", event => {

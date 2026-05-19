@@ -1,3 +1,5 @@
+create extension if not exists pgcrypto;
+
 create table if not exists public.workspace_records (
   id uuid primary key default gen_random_uuid(),
   area text not null,
@@ -16,6 +18,11 @@ create table if not exists public.workspace_records (
 );
 
 alter table public.workspace_records enable row level security;
+
+drop policy if exists "Equipe autenticada pode ler registros" on public.workspace_records;
+drop policy if exists "Equipe autenticada pode criar registros" on public.workspace_records;
+drop policy if exists "Equipe autenticada pode editar registros" on public.workspace_records;
+drop policy if exists "Equipe autenticada pode excluir registros" on public.workspace_records;
 
 create policy "Equipe autenticada pode ler registros"
 on public.workspace_records
