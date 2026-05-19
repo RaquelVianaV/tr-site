@@ -221,7 +221,7 @@
     .topbar {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: flex-end;
       gap: 16px;
       margin-bottom: 18px;
     }
@@ -240,12 +240,42 @@
     }
 
     .mode {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       padding: 8px 10px;
       border: 1px solid var(--line);
       border-radius: 8px;
-      color: var(--muted);
-      background: rgba(255, 253, 248, .72);
-      font-size: 13px;
+      color: #0c6b48;
+      background: rgba(255, 253, 248, .82);
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .mode::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: #07865f;
+    }
+
+    .mode.offline {
+      color: var(--rose);
+    }
+
+    .mode.offline::before {
+      background: var(--rose);
+    }
+
+    .today-date {
+      padding: 12px 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: #111827;
+      background: #fffdf8;
+      font-size: 16px;
+      font-weight: 900;
     }
 
     .dashboard-top,
@@ -1281,10 +1311,11 @@
 
     <main class="workspace">
       <div class="topbar">
-        <div class="crumb">Workspace da equipe / <span id="currentAreaLabel">Tarefas</span></div>
         <div class="session">
-          <span class="mode" id="modeLabel">Modo local</span>
-          <button class="ghost" id="exportJson" type="button">Exportar JSON</button>
+          <span class="mode" id="serverStatus">Servidor online</span>
+          <span class="mode" id="databaseStatus">Banco local</span>
+          <span class="today-date" id="todayDate">Hoje</span>
+          <button class="ghost" id="exportJson" type="button">Backup</button>
           <button class="ghost" id="logout" type="button">Sair</button>
         </div>
       </div>
@@ -1477,8 +1508,9 @@
       demoLogin: document.querySelector("#demoLogin"),
       loginNote: document.querySelector("#loginNote"),
       nav: document.querySelector("#nav"),
-      currentAreaLabel: document.querySelector("#currentAreaLabel"),
-      modeLabel: document.querySelector("#modeLabel"),
+      serverStatus: document.querySelector("#serverStatus"),
+      databaseStatus: document.querySelector("#databaseStatus"),
+      todayDate: document.querySelector("#todayDate"),
       logout: document.querySelector("#logout"),
       dashboardTop: document.querySelector("#dashboardTop"),
       todayPanel: document.querySelector("#todayPanel"),
@@ -1530,6 +1562,20 @@
 
     function todayISO() {
       return new Date().toISOString().slice(0, 10);
+    }
+
+    function formatTodayLong() {
+      return new Date().toLocaleDateString("pt-BR", {
+        weekday: "long",
+        day: "2-digit",
+        month: "long",
+        year: "numeric"
+      }).replace(/^\w/, char => char.toUpperCase());
+    }
+
+    function setDatabaseStatus(text, online = true) {
+      els.databaseStatus.textContent = text;
+      els.databaseStatus.classList.toggle("offline", !online);
     }
 
     function formatDateBR(value) {
@@ -1910,9 +1956,11 @@
       if (error) {
         console.error(error);
         recordsByArea = loadLocalData();
-        els.modeLabel.textContent = "Supabase indisponível: usando local";
+        setDatabaseStatus("Banco local", false);
         return;
       }
+
+      setDatabaseStatus("Banco online", true);
 
       recordsByArea = seedData();
       Object.keys(recordsByArea).forEach(key => recordsByArea[key] = []);
@@ -2310,7 +2358,6 @@
 
     function renderRecords() {
       if (currentArea === "overview") {
-        els.currentAreaLabel.textContent = "Visão geral";
         els.dashboardTop.hidden = false;
         els.metrics.hidden = false;
         els.overviewGrid.hidden = false;
@@ -2339,7 +2386,6 @@
         return (!query || haystack.includes(query)) && (!status || item.status === status);
       });
 
-      els.currentAreaLabel.textContent = area.label;
       els.sectionTitle.textContent = currentArea === "tasks" ? "Banco de tarefas" : currentArea === "calendar" ? "Calendário imediato" : area.label;
       els.sectionDescription.textContent = area.description;
       if (currentArea !== "graduations" && currentArea !== "calendar") renderStatusFilter(items);
@@ -2572,7 +2618,10 @@
     function showApp() {
       els.loginView.hidden = true;
       els.appView.hidden = false;
-      els.modeLabel.textContent = supabaseClient ? "Supabase conectado" : `Modo local: ${localUser || "usuário demo"}`;
+      els.serverStatus.textContent = "Servidor online";
+      els.serverStatus.classList.remove("offline");
+      setDatabaseStatus(supabaseClient ? "Banco online" : "Banco local", Boolean(supabaseClient));
+      els.todayDate.textContent = formatTodayLong();
       renderAll();
       fetchGoogleCalendarEvents().then(renderAll);
     }
@@ -2775,7 +2824,7 @@
       const url = URL.createObjectURL(blob);
       const link = document.createElement("a");
       link.href = url;
-      link.download = "tr-eventos-workspace.json";
+      link.download = "backup-tr-eventos-workspace.json";
       link.click();
       URL.revokeObjectURL(url);
     });
